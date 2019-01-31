@@ -1,0 +1,17 @@
+FROM silence226/python-win1803-nano:3.6.8
+
+WORKDIR /flask
+
+COPY requirements.txt ./
+
+RUN pip install -r requirements.txt
+
+COPY src/* ./
+
+EXPOSE 80
+
+ENV FLASK_APP=hello.py
+
+#CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+
+ENTRYPOINT ["python", "hello.py"]
